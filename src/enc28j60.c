@@ -1002,11 +1002,11 @@ int enc28j60_readframe(enc28j60 *ins, enc28j60_header *frame, uint16_t max_lengt
 #ifndef ENC28J60_HAS_ADVANCED_DRIVER
     length = length + 1;
 #endif
-    ins->length = length;
     if(length > max_length) {
         rxstatus |= ENC28J60_RXSTATUS_TRIMMED;
         length = max_length;
     }
+    ins->length = length;
     ins->frame = (char *) frame;
     ins->rxstatus = rxstatus;
     ins->retry_count = 1;
